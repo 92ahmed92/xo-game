@@ -1,51 +1,71 @@
 
 let title=document.querySelector(".title")
-let turn="x"
+let turn="X"
 let squares=[]
-function gewinner(){
-    for(let i=1;i<10;i++)
+function detectWinner(){
+    for(let i=1; i<10; i++)
     {
-        squares[i]=document.getElementById("item+i")
+        squares[i]=document.getElementById("item" + i).innerHTML
     }
-        title.innerHTML= "${squares[1]}winner";
-        document.getElementById("item+1").style.background= "#000";
-        document.getElementById("item+2").style.background= "#000";
-        document.getElementById("item+3").style.background= "#000";
+    
+    if(squares[1] === squares[2] && squares[2] === squares[3] && squares[3] != ""){
+        title.innerHTML= `${squares[1]}` + " is th winner";
+        document.getElementById("item" + 1).style.background= "#000";
+        document.getElementById("item" + 2).style.background= "#000";
+        document.getElementById("item" + 3).style.background= "#000";
         setInterval(function(){ title.innerHTML +="."},1000);
         setTimeout(function(){location.reload()},4000)
-    
-
-
-    
-     else if(squares[4]==squares[5]&&squares[5]==squares[6]&&squares[6]!=""){
-
     }
-    else if(squares[7]==squares[8]&&squares[9]==squares[8]&&squares[8]!=""){
-
+    else if(squares[4] === squares[5] && squares[5] === squares[6] && squares[6] != ""){
+        title.innerHTML= `${squares[4]}` + " is th winner";
+        document.getElementById("item" + 4).style.background= "#000";
+        document.getElementById("item" + 5).style.background= "#000";
+        document.getElementById("item" + 6).style.background= "#000";
+        setInterval(function(){ title.innerHTML +="."},1000);
+        setTimeout(function(){location.reload()},4000)
     }
-    else if(squares[1]==squares[5]&&squares[5]==squares[9]&&squares[9]!="")
+    else if(squares[7] === squares[8] && squares[8] === squares[9] && squares[9] != ""){
+        title.innerHTML= `${squares[7]}` + " is th winner";
+        document.getElementById("item" + 7).style.background= "#000";
+        document.getElementById("item" + 8).style.background= "#000";
+        document.getElementById("item" + 9).style.background= "#000";
+        setInterval(function(){ title.innerHTML +="."},1000);
+        setTimeout(function(){location.reload()},4000)
+    }
+    else if(squares[1] === squares[5] && squares[5] === squares[9] && squares[9] != "")
     {
-
+        title.innerHTML= `${squares[1]}` + " is th winner";
+        document.getElementById("item" + 1).style.background= "#000";
+        document.getElementById("item" + 5).style.background= "#000";
+        document.getElementById("item" + 9).style.background= "#000";
+        setInterval(function(){ title.innerHTML +="."},1000);
+        setTimeout(function(){location.reload()},4000)
     }
-    else if(squares[3]==squares[5]&&squares[7]==squares[5]&&squares[5]!=""){
-
+    else if(squares[3] === squares[5] && squares[5] === squares[7] && squares[7] != ""){
+        title.innerHTML= `${squares[3]}` + " is th winner";
+        document.getElementById("item" + 3).style.background= "#000";
+        document.getElementById("item" + 5).style.background= "#000";
+        document.getElementById("item" + 7).style.background= "#000";
+        setInterval(function(){ title.innerHTML += "."},1000);
+        setTimeout(function(){location.reload()},4000)
     }
 }
 
 
-function game(id){
+function setSquareContent(id){
     let element= document.getElementById(id);
-    if (turn==="x" && element.innerHTML=="")
+    if (turn === "X" && element.innerHTML === "")
     {
-      element.innerHTML="x" 
-      turn="o" 
-      title.innerHTML="o"
+      element.innerHTML="X" 
+      turn="O" 
+      title.innerHTML="O"
     }
-    if(turn==="o"  && element.innerHTML=="")
+    if(turn === "O"  && element.innerHTML === "")
     {
-        element.innerHTML="o";
-        turn="x"
-        title.innerHTML="x"
+        element.innerHTML = "O";
+        turn = "X"
+        title.innerHTML = "X"
     }
-    gewinner();
+
+    detectWinner();
 }
